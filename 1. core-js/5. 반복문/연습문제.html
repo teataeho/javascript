@@ -13,36 +13,40 @@
     <script>
         // Math.random(): 0.0이상 1.0미만의 랜덤값.
         // Math.floor(): 내림, Math.ceil(): 올림, Math.round(): 반올림
-        
-        while(true) {
-            var rn1 = Math.floor(Math.random()*20 + 1);
-            var rn2 = Math.floor(Math.random()*20 + 1);
-            var rn = Math.floor(Math.random()*3);
+
+        var cCount = 0, iCount = 0;
+
+        while (true) {
+            var rn1 = Math.floor(Math.random() * 20 + 1);
+            var rn2 = Math.floor(Math.random() * 20 + 1);
+            var rn = Math.floor(Math.random() * 3);
             var result = 0;
-            if(rn === 0) {
-                alert(`${rn1} + ${rn2} = ???`);
-                result = rn1 + rn2
-            } else if(rn === 1) {
-                alert(`${rn1} - ${rn2} = ???`);
-                result = rn1 - rn2
+            var operatorMark;
+            if (rn === 0) {
+                operatorMark = '+';
+                result = rn1 + rn2;
+            } else if (rn === 1) {
+                operatorMark = '-';
+                result = rn1 - rn2;
             } else {
-                alert(`${rn1} x ${rn2} = ???`);
-                result = rn1 * rn2
+                operatorMark = 'x';
+                result = rn1 * rn2;
             }
-            var answer = prompt('정답을 입력해주세요.');
-            if(answer == '그만') {
-                alert('종료합니다.');                    
+            var answer = prompt(`${rn1} ${operatorMark} ${rn2} = ???`);
+            if (answer === '그만') {
                 break;
+            }
+            if (answer == result) {
+                alert('정답입니다.');
+                cCount++;
             } else {
-                if(answer == result) {
-                    alert('정답입니다.');                    
-                } else {
-                    alert('오답입니다.');                    
-                }
+                alert('오답입니다.');
+                iCount++;
             }
         }
 
-
+        alert(`프로그램이 종료되었습니다.
+        # 정답 횟수: ${cCount}회, 오답 횟수: ${iCount}회`);
     </script>
 
 </body>
