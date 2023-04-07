@@ -98,6 +98,7 @@
         */
         document.getElementById('btn1').addEventListener('click', e => {
             const $body = document.querySelector('body');
+            const $a = document.querySelector('a');
             $body.classList.toggle('dark');
             if ($body.classList.contains('dark')) {
                 e.target.textContent = '밝게 보기'
