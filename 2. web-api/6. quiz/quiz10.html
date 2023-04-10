@@ -34,12 +34,15 @@
 	/*
 	사진을 클릭할 때마다 결과 화면이 그 사진으로 바뀌면 됩니다. 
 	*/
-    [...document.querySelectorAll('div > ul > li > img')].forEach($i => {
-        $i.addEventListener('click', e => {
-            document.querySelector('.result img').src = e.target.src;
-        });
+    const $ul = document.querySelector('ul');
+    const $img = document.querySelector('.result img');
+        
+    $ul.addEventListener('click', e => {
+        if(!e.target.matches('ul > li > img')) {
+            return;
+        }
+        $img.setAttribute('src', e.target.src);
     });
-    
 
     </script>
     

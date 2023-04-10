@@ -71,10 +71,13 @@
         */
         const $toggle = document.querySelector('.toggle');
         $toggle.addEventListener('click', e => {
-            [...document.querySelectorAll('.toggle-menu')].forEach($t => {
-                $t.classList.remove('active');
-            });
-            document.querySelector(e.target.dataset.id).classList.toggle('active');
+            if (!e.target.matches('.toggle > li')) {
+                return;
+            }
+            const $toggleList = document.querySelectorAll('.toggle-menu');
+            [...$toggleList].forEach($t => {
+                $t.classList.toggle('active', document.querySelector(e.target.dataset.id) === $t);
+            })
         });
     </script>
 
